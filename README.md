@@ -2,9 +2,9 @@
 
 Offline-first playlist player for audio & video files that runs entirely in the browser. Bring your local library or point the player at `file://` and network URLs, then enjoy VLC-style playback controls, looping, shuffle, playlist persistence, and custom theming—all without a backend.
 
-![Mini VLC UI Preview](docs/ui-preview.jpg)
+![Mini VLC UI Preview](preview.png)
 
-> 💡 Save the screenshot above as `docs/ui-preview.jpg` (or update the path) so the image renders on GitHub. The preview in this README references the image you shared.
+> 💡 The preview uses `preview.png` in the repo root—replace it with your screenshot if you’d like a different look.
 
 ---
 
@@ -22,18 +22,9 @@ Offline-first playlist player for audio & video files that runs entirely in the 
 
 ## 🚀 Quick Start
 
-```bash
-# clone your repo & enter it
-git clone https://github.com/<you>/mini-vlc.git
-cd mini-vlc
-
-# serve statically (optional but recommended to avoid browser file restrictions)
-npx serve .
-# or
-python3 -m http.server 4173
-```
-
-Then open the reported URL (or double-click `index.html` if you prefer). Drag media files into the window or use the Add Media panel on the right.
+1. Clone or download this repository.
+2. Double-click `index.html` (or drag it into any modern browser).
+3. Drop files into the window or use the Add Media panel to start building your playlist.
 
 ### Recommended browsers
 
@@ -52,8 +43,7 @@ Then open the reported URL (or double-click `index.html` if you prefer). Drag me
 ├── index.html        # Layout shell & main UI markup
 ├── styles.css        # Modern glassy theme, responsive grid, custom controls
 ├── app.js            # Player logic, playlist management, persistence helpers
-└── docs/
-    └── ui-preview.jpg (add this screenshot here)
+└── preview.png       # Screenshot referenced in the README
 ```
 
 ---
