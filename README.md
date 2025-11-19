@@ -4,7 +4,7 @@ Offline-first playlist player for audio & video files that runs entirely in the 
 
 ![Mini VLC UI Preview](preview.png)
 
-> 💡 The preview uses `preview.png` in the repo root—replace it with your screenshot if you’d like a different look.
+> 💡 The preview uses `preview.png` in the repo root—replace it with your image if you’d like a different look ( just from wepage itself ).
 
 ---
 
