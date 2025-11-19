@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini VLC - Offline Media Jukebox</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header>
+        <div>
+          <h1>Mini VLC</h1>
+          <p class="subtitle">
+            Offline-first playlist player for audio &amp; video files
+          </p>
+        </div>
+        <button type="button" id="clearPlaylistBtn" class="ghost danger">
+          Clear Playlist
+        </button>
+      </header>
+
+      <main class="layout">
+        <section class="player-panel card">
+          <div class="media-frame">
+            <video
+              id="mediaElement"
+              preload="metadata"
+              playsinline
+              crossorigin="anonymous"
+            ></video>
+            <div class="placeholder" id="placeholder">
+              <span class="emoji">🎵</span>
+              <p>Drop or add a track to get started.</p>
+            </div>
+            <div class="audio-cover" id="audioCover" hidden>
+              <div class="audio-cover-inner">
+                <img id="audioCoverImage" alt="Audio artwork" hidden />
+                <div class="audio-cover-fallback">Audio Artwork</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="controls">
+            <div class="row">
+              <button id="prevBtn" type="button" title="Previous">
+                ⏮
+              </button>
+              <button id="playPauseBtn" type="button" class="primary">
+                ▶
+              </button>
+              <button id="nextBtn" type="button" title="Next">
+                ⏭
+              </button>
+              <button id="restartBtn" type="button" title="Restart track">
+                ↺
+              </button>
+              <button id="muteBtn" type="button" title="Mute / Unmute">
+                🔈
+              </button>
+            </div>
+
+            <div class="row progress-row">
+              <span id="currentTime">00:00</span>
+              <input
+                type="range"
+                id="seekBar"
+                min="0"
+                max="1000"
+                step="1"
+                value="0"
+              />
+              <span id="duration">00:00</span>
+            </div>
+
+            <div class="row volume-row">
+              <label class="volume">
+                Volume
+                <input
+                  type="range"
+                  id="volumeSlider"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value="1"
+                />
+              </label>
+              <div class="toggle-group">
+                <button type="button" id="loopTrackBtn" class="ghost">
+                  Loop Track
+                </button>
+                <button type="button" id="loopPlaylistBtn" class="ghost">
+                  Loop Playlist
+                </button>
+                <button type="button" id="shuffleBtn" class="ghost">
+                  Shuffle
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="side-column">
+          <section class="playlist-panel card">
+            <div class="panel-head">
+              <h2>Playlist</h2>
+              <span id="playlistCount" class="badge">0 items</span>
+            </div>
+            <ul id="playlist" class="playlist"></ul>
+          </section>
+
+          <section class="add-panel card">
+            <h2>Add Media</h2>
+            <form id="addForm">
+              <label>
+                File or Stream URL
+                <input
+                  type="url"
+                  id="urlInput"
+                  placeholder="file:///home/user/media/song.mp3"
+                />
+              </label>
+
+              <div class="file-picker">
+                <label class="file-btn">
+                  <input
+                    type="file"
+                    id="fileInput"
+                    accept="audio/*,video/*"
+                    multiple
+                  />
+                  Choose local files
+                </label>
+                <span id="fileName">No files selected</span>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="primary">Add to Playlist</button>
+                <button type="button" id="resetFormBtn" class="ghost">
+                  Reset
+                </button>
+              </div>
+            </form>
+            <p class="hint">
+              Tip: drop files anywhere on the page to enqueue them instantly.
+            </p>
+          </section>
+
+          <section class="customize-panel card">
+            <h2>Look &amp; Feel</h2>
+            <div class="field-group">
+              <label>Player Background</label>
+              <div class="bg-controls">
+                <label class="file-btn subtle">
+                  <input type="file" id="bgImageInput" accept="image/*" />
+                  Custom image
+                </label>
+                <button type="button" id="bgResetBtn" class="ghost">
+                  Default
+                </button>
+              </div>
+              <p class="hint">Background preferences persist offline.</p>
+            </div>
+
+            <div class="field-group">
+              <label>Audio Artwork</label>
+              <select id="audioArtSelect">
+                <option value="default">Default matte</option>
+                <option value="background">Reuse background image</option>
+                <option value="custom">Custom artwork</option>
+              </select>
+              <div class="art-upload" id="audioArtUploadGroup" hidden>
+                <label class="file-btn subtle">
+                  <input type="file" id="audioArtInput" accept="image/*" />
+                  Upload artwork
+                </label>
+                <button type="button" id="audioArtResetBtn" class="ghost">
+                  Clear artwork
+                </button>
+              </div>
+              <p class="hint">
+                Artwork replaces the black canvas whenever an audio file plays.
+              </p>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+
